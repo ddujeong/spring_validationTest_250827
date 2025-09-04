@@ -9,11 +9,11 @@
 </head>
 <body>
 	<h2>회원가입</h2>
-	<form action="memberJoinOk">
+	<form action="memberJoinOk" method="post">
 	<hr>
 	아이디 : <input type="text" name="id"><br><br>
 	비밀번호 : <input type="password" name="password"><br><br>
-	비밀번호 확인 : <input type="text" name="confirmPassword"><br><br>
+	비밀번호 확인 : <input type="password" name="confirmPassword"><br><br>
 	이름 : <input type="text" name="name"><br><br>
 	이메일 : <input type="text" name="email"><br><br>
 	나이 : <input type="text" name="age"><br><br>

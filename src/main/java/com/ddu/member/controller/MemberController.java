@@ -20,10 +20,10 @@ public class MemberController {
 		return"memberJoin";
 	}
 	@RequestMapping(value = "/memberJoinOk")
-	public String memberJoinOk(@ModelAttribute("memberDto") MemberDto memberDto, Model model, BindingResult result){
+	public String memberJoinOk(@ModelAttribute("memberDto") MemberDto memberDto,BindingResult result, Model model){
 		
 		MemberValidator memberValidator = new MemberValidator();
-		memberValidator.validate("memberDto", result);
+		memberValidator.validate(memberDto, result);
 		
 		if (result.hasErrors()) {
 			List<ObjectError> allErrors = result.getAllErrors();
@@ -33,9 +33,12 @@ public class MemberController {
 				errorMsg.add(objectError.getDefaultMessage());
 			}
 			model.addAttribute("signupError", "회원가입에 실패 하였습니다.");
-			model.addAttribute("errorMsg",allErrors );
+			model.addAttribute("errorMsg",errorMsg );
+			
+			model.addAttribute("memberDto", memberDto);
 			return"memberJoin";
 		}
+		model.addAttribute("memberDto", memberDto);
 		return"memberJoinOk";
 	}
 }
